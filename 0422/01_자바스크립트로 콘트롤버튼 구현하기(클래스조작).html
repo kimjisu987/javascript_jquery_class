@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01_자바스크립트로 콘트롤버튼 구현하기(클래스조작)</title>
+  <style>
+    ul, li{list-style: none; margin: 0; padding: 0;}
+    li{
+      width: 15px; height: 15px;
+      background: #ccc;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .act{background: #e26559 !important;}
+  </style>
+</head>
+<body>
+  <h2>01_자바스크립트로 콘트롤버튼 구현하기(클래스조작)</h2>
+  <p>목록태그를 활용하여 콘트롤버튼 서식을 작성하고, act클래스로 클릭시 적용할 서식을 작성하여 사용자가 버튼을 클릭하면 모든 act를 제거하고 해당 버튼에만 act클래스를 적용한다.</p>
+  <ul class="c_btn_list">
+    <li class="c_btn act">&nbsp;</li>
+    <li class="c_btn">&nbsp;</li>
+    <li class="c_btn">&nbsp;</li>
+    <li class="c_btn">&nbsp;</li>
+  </ul>
+
+  <!-- 1. 제이쿼리로 구현 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    // $(document).ready(function(){
+    //  1. 변수선언
+    //  let cbtn = $('.c_btn');
+
+    //  2. 사용자가 콘트롤버튼을 클릭시 해당 li에 act클래스 적용하기
+    //  cbtn.click(function(){
+    //    $('.c_btn').removeClass('act');   // 기존 서식을 모두 제거하고
+    //    $(this).addClass('act');    // 해당 li에 서식을 적용한다.
+    //  });
+    // });
+  </script>
+
+  <!-- 2. 자바스크립트로 구현 -->
+  <script>
+    // 1. 변수선언
+    let c_btn = document.querySelectorAll('.c_btn');
+
+    // 2. 반복문을 사용하여 c_btn에 각각 이벤트를 설정하여 서식을 적용한다.(자바스크립트는 클릭이벤트를 한 번에 주기 어려움)
+    for(let i=0; i<c_btn.length; i++){
+      console.log(c_btn[i]);    // c_btn[i] = 컨트롤 버튼이 4개 있다는 것. (태그 목록 확인. 4개가 다 나옴)
+      c_btn[i].addEventListener('click', class_act);    // 사용자가 click했을 때 class_act 함수야 니가 실행해     
+    }
+    // act 서식이 변경되는 함수
+    function class_act(){
+      // c_btn에 있는 act서식을 지워야 하는데, 어디에 있는지 모르니 for문을 통해 전부 삭제한다.
+      for(let j=0; j<c_btn.length; j++){    // 반복문을 돌려서 콘트롤 개수만큼
+        c_btn[j].classList.remove('act');   // act 서식을 찾아서 제거하고
+        this.classList.add('act');          // 클릭한 c_btn에만 서식을 적용한다.
+      };
+    }
+  </script>
+</body>
+</html>

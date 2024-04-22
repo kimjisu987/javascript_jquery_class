@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01_연산자 실습하기</title>
+</head>
+<body>
+  <h2>01_연산자 실습하기</h2>
+  <p>자바스크립트 연산자를 활용하여 수식을 만들고 결과값에 대해 이해하기</p>
+
+  <script>
+    // 1. 산술연산자 + - * / %
+    let a, b, res;
+
+    // 데이터 입력
+    a = 10;
+    b = 3;
+    
+    // 데이터 출력
+    res = a + b;      // 10 + 3 = 13
+    document.write('산술연산자' + res + '<br>');
+
+    res = a - b;      // 10 - 3 = 7
+    document.write('산술연산자' + res+'<br>');
+
+    res = a%b;        // 10 / 3 = 나머지값 (1)
+    document.write('나머지값' + res + '<br>');
+
+    // 2. 비교연산자 <, >, <=, >=, ==, ===
+    res = a > b;      // 10 > 3 = true
+    document.write('비교연산자' + res + '<br>');
+
+    res = a < b;      // 10 < 3 =/= false
+    document.write('비교연산자' + res + '<br>');
+
+    // 3. 대입연산자 a=b, a+=b, a-=b
+    // c = a + b      a + b를 해서 c에 담아라 (오른쪽을 먼저)
+    res = a += b;    // 13
+    document.write('대입연산자' + res + '<br>');
+
+    // 위에서 a에 담긴 13이 남아있기 때문에 7이 아니라 10이 나옴 - 마지막에 저장된 데이터가 남는다.
+    res = a -= b;    // 10
+    document.write('대입연산자' + res + '<br>');
+
+    // 4. 증감연산자 : ++(1씩증가), --(1씩감소)
+    res = a++;      // a를 출력하고 난 뒤에 1을 더하라. 출력은 10이 됐지만, 변수에는 11이 담겨져있음
+    document.write('증감연산자' + res+'<br>');
+
+    res = a--;      // a를 출력하고 난 뒤에 1을 빼라. 위에서 담겨진 변수 11이 출력되고, 담겨지는건 10이 담겨진다
+    document.write('증감연산자' + res+'<br>');
+
+    res = ++a;      // 앞에 쓰면 먼저 빼고 출력 - 원하는 결과값 가질 수 있음. 위에서 담겨진 변수 10에 1을 더해 11이 출력되면서 담김
+    document.write('증감연산자' + res+'<br>');
+
+    res = --a;
+    document.write('증감연산자' + res+'<br>');
+
+    // 5. 논리연산자 : &&(and), ||(or), !(not)
+    // ID와 PW 모두가 맞아야(&&and) 로그인이 되는 조건에 많이 사용됨
+    alert((1<2)&&(1>2));      // 조건이 모두 맞아야 하므로 false 출력됨
+    alert((1<2)||(1>2));      // 둘 중 하나만 맞아도 돼서 true 출력됨
+
+    // 6. 문자열 결합연산자 +
+    res = a + b;        // 산술연산자 : 둘 다 숫자라 연산식이 이루어짐
+    res = a + 'b';      // 결합연산자 : 'b'가 따옴표로 묶여 문자가 되었으니 결합됨
+
+    // 7. 상항조건연산자    조건식?실행문1:실행문2;
+    let name=prompt('이름을 입력하세요. 예)홍길동');  // 값을 입력하면 앞에 name(변수)에 저장됨
+    // = 하나는 대입연산자, == 두개는 같은지(맞는지)
+    name=='홍길동'?document.write('입력하신 이름이 맞습니다.'):document.write('입력하신 이름이 맞지 않습니다. 다시 확인하세요.<br>')
+
+    // 입력하신 id의 값이 master이거나 naver이고, 패스워드가 '1234'일 경우 '로그인 성공', 아닐 경우 '로그인 실패'라고 결과 출력하기
+    let id=prompt('아이디를 입력하세요.');
+    let pw=prompt('비밀번호를 입력하세요.');
+    (id=='master'||'naver')&&(pw=='1234')?document.write('로그인 성공'):document.write('로그인 실패');
+
+  </script>
+</body>
+</html>

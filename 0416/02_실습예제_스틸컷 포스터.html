@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02_실습예제_스틸컷 포스터</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" type="text/css">
+  <style>
+    *{margin: 0; padding: 0; list-style: none;}
+    #poster_box{
+      width: 500px;
+      margin: 0 auto;
+    }
+    
+    #b_img_box{
+      display: flex;
+      text-align: center;
+      margin-top: 10px;
+    }
+    #b_img_box img{
+      width: 500px; height: 500px;
+      object-fit: cover;
+      overflow: hidden;
+    }
+
+    #s_box{
+      display: flex;
+      text-align: center;
+    }
+    #s_img{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 450px;
+    }
+    #s_img img{
+      width: 80px; height: 80px;
+      object-fit: cover;
+      border: 2px solid rgba(0,0,0,0);
+      margin-bottom: -4px;
+    }
+    
+    .btn_bottom{transform: translateY(220px);}
+    input{
+      background: #e26559;
+      color: #fff;
+      border: 0px;
+      border-radius: 5px;
+      padding: 4px 6px;
+      cursor: pointer;
+    }
+    #top_box{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 20px;
+    }
+    #photo{font-size: 28px; font-weight: bold;}
+    .fas{
+      width: 30px; height: 80px;
+      background: #fff;
+      border: 1px solid #dddddd;
+      text-align: center;
+      padding-top: 23px;
+      box-sizing: border-box;
+      font-size: 30px;
+      cursor: pointer;
+    }
+    #button_box > i:last-child{
+      float: right;
+    }
+    #page_num{font-weight: bold; color: #da2111;}
+  </style>
+</head>
+<body>
+  <div id="poster_box">
+    <div id="top_box">
+      <p>
+        <span id="photo">포토</span>
+        <span id="page_num">&nbsp;</span><br>
+        스틸컷 포스터
+      </p>
+      <p>
+        <input type="button" value="원본보기">
+        <input type="button" value="주소복사">
+      </p>
+    </div>
+
+    <div id="s_box">
+      <i class="fas fa-angle-left" id="l_btn"></i>
+      <div id="s_img">
+        <li><img src="./images01/movie_image1.jpg" alt="영화포스터1"></li>
+        <li><img src="./images01/movie_image2.jpg" alt="영화포스터2"></li>
+        <li><img src="./images01/movie_image3.jpg" alt="영화포스터3"></li>
+        <li><img src="./images01/movie_image4.jpg" alt="영화포스터4"></li>
+        <li><img src="./images01/movie_image5.jpg" alt="영화포스터5"></li>
+        <li><img src="./images01/movie_image6.jpg" alt="영화포스터6"></li>
+        <li><img src="./images01/movie_image7.jpg" alt="영화포스터7"></li>
+        <li><img src="./images01/movie_image8.jpg" alt="영화포스터8"></li>
+        <li><img src="./images01/movie_image9.jpg" alt="영화포스터9"></li>
+        <li><img src="./images01/movie_image10.jpg" alt="영화포스터10"></li>
+      </div>
+      <i class="fas fa-angle-right" id="r_btn"></i>
+    </div>
+
+    <div id="b_img_box">
+      <i class="fas fa-angle-left btn_bottom" id="l_btn2"></i>
+      <img src="./images01/movie_image1.jpg" alt="영화포스터1" id="b_img">
+      <i class="fas fa-angle-right btn_bottom" id="r_btn2"></i>
+    </div>
+
+  </div>
+
+  <script>
+    let n = 1;    // 페이지 넘버(왼쪽) 출력
+    const t_n = 10;   // 페이지 넘버(오른쪽) 출력
+
+    const l_btn = document.getElementById('l_btn', 'l_btn2');    // 왼쪽 버튼 변수
+    const r_btn = document.getElementById('r_btn');    // 오른쪽 버튼 변수
+
+    const b_img = document.getElementById('b_img');   // 큰 사진 변수
+    let s_img = document.querySelectorAll('#s_img > li > img');   // 작은 사진 변수
+
+    document.getElementById('page_num').innerHTML= n + '/' + t_n;
+
+    // 왼쪽 버튼 클릭하여 번호 변경
+    l_btn.onclick=function(){
+      // window.alert('좌측버튼 클릭');
+      if(n==1){
+        n=10;
+      }else{
+        n--;
+      }
+    document.getElementById('page_num').innerHTML= n + '/' + t_n;
+    document.getElementById('b_img').src="./images01/movie_image"+n+".jpg";
+    }
+
+    // 오른쪽 버튼 클릭하여 번호 변경
+    r_btn.onclick=function(){
+      // window.alert('우측버튼 클릭');
+      if(n==10){
+        n=1;
+      } else{
+        n++;
+      }
+    document.getElementById('page_num').innerHTML= n + '/' + t_n;
+    document.getElementById('b_img').src="./images01/movie_image"+n+".jpg";
+    }
+
+    l_btn2.onclick=function(){
+      // window.alert('좌측버튼 클릭');
+      if(n==1){
+        n=10;
+      }else{
+        n--;
+      }
+    document.getElementById('page_num').innerHTML= n + '/' + t_n;
+    document.getElementById('b_img').src="./images01/movie_image"+n+".jpg";
+    }
+    r_btn2.onclick=function(){
+      // window.alert('우측버튼 클릭');
+      if(n==10){
+        n=1;
+      } else{
+        n++;
+      }
+    document.getElementById('page_num').innerHTML= n + '/' + t_n;
+    document.getElementById('b_img').src="./images01/movie_image"+n+".jpg";
+    }
+
+    for(let i=0; i<s_img.length;i++){
+      s_img[i].addEventListener('click', function(){
+
+        document.getElementById('page_num').innerHTML= i+1 + '/' + t_n;
+
+        let img_src = this.src;
+        b_img.src=img_src;
+
+        for(let j=0; j<s_img.length;j++){
+          s_img[j].style.border = '2px solid rgba(0,0,0,0)';
+        }
+        this.style.border = '2px solid red';
+      });
+    }
+
+  </script>
+</body>
+</html>

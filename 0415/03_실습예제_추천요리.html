@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03_실습예제_추천요리</title>
+  <style>
+    .food{
+      width: 400px; height: 300px;
+      border: 2px solid #a7a7a7;
+      text-align: center;
+    }
+    #food{
+      display: inline;
+      padding: 5px 10px;
+      background: rgb(255, 255, 105);
+      position: relative; top: -17px;
+      border-radius: 10px;
+    }
+    .food img{
+      width: 280px; height: 250px;
+      padding-top: 20px;
+    }
+    .food span{
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>요일별 추천요리 출력하기</h1>
+  <div class="food">
+    <div id="food"></div>
+    <img id="food_img" src="../0403/food/food3.jpg" alt="군만두">
+  </div>
+
+  <script>
+    let today = new Date();
+    let yoil = ['일', '월', '화', '수', '목', '금', '토'];
+    let t_yoil = today.getDay();    // 요일번호
+    document.getElementById('food').innerHTML=`오늘 <span>${yoil[t_yoil]}</span>요일의 추천요리는`;
+    document.getElementById('food_img').src=`../0403/food/food${t_yoil}.jpg`;
+
+    // 선생님 방법
+    // let today3 = new Date();
+    // let day = today.getDay();
+    // let array = ['일', '월', '화', '수', '목', '금', '토'];
+    // let food = ['food1.jpg', 'food2.jpg', 'food3.jpg', 'food4.jpg', 'food5.jpg', 'food6.jpg', 'food7.jpg']
+
+    // document.getElementById('food').innerHTML=`
+    //   <p>오늘의 (${array[day]})추천요리는<br>
+    //   <img src="./food/${food[day]}" alt="">
+    // `
+    
+  </script>
+</body>
+</html>

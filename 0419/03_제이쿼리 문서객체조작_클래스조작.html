@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03_제이쿼리 문서객체조작_클래스조작</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    h2{color: #9292ff;}
+    .bg_green{background: #99ff99;}
+
+    p{background: #ffff76;}
+    .color1{color: #ff8181}
+
+    i{font-size: 50px;}
+  </style>
+  <!-- 제이쿼리 라이브러리 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <!-- 제이쿼리 랩퍼 -->
+  <script>
+    $(document).ready(function(){
+      // h2를 클릭하면 미리 만든 클래스 서식을 적용한다.
+      $('h2').click(function(){
+        $(this).addClass('bg_green');
+      });
+      // p태그를 더블클릭하면 미리 만든 클래스 서식을 적용한다.
+      $('p').dblclick(function(){
+        $(this).addClass('color1');
+      });
+
+      // addClass로 서식을 추가한다.
+      $('#btn01').click(function(){
+        $('h2').addClass('bg_green');
+        $('p').addClass('color1');
+      });
+
+      // removeClass로 서식을 삭제한다.
+      $('#btn02').click(function(){
+        $('h2').removeClass('bg_green');
+        $('p').removeClass('color1');
+      });
+
+      // toggleClass로 add, remove 두가지 기능 넣기
+      $('#btn03').click(function(){
+        $('h2').toggleClass('bg_green');
+        $('p').toggleClass('color1');
+      });
+
+      // hasClass 로 클래스 이름이 있는지 찾기
+      $('#btn04').click(function(){
+        if($('h2').hasClass('bg_green')==true){
+          alert('h2 태그에 bg_green 서식이 존재합니다.');
+        } else{
+          alert('h2 태그에 bg_green 서식이 존재하지 않습니다.');
+        };
+      });
+    });
+  </script>
+</head>
+<body>
+  <h2>03_제이쿼리 문서객체조작_클래스조작</h2>
+  <p>사용자가 선택한 요소에 클래스를 추가하거나 삭제, 또는 클래스가 없는 요소를 찾아서 서식을 적용하는 메소드이다.</p>
+  <ul>
+    <li><b>addClass()</b> 선택한 요소에 클래스 서식을 추가</li>
+    <li><b>removeClass()</b> 선택한 요소에 클래스 서식을 제거</li>
+    <li><b>toggleClass()</b> 선택한 요소에 클래스 서식을 추가/제거</li>
+    <li><b>hasClass()</b> 선택한 요소에 해당 클래스 이름이 있는지 여부를 판단하여 true, false값으로 표시</li>
+    <li><b>class()</b> 사용자가 선택한 요소에 서식을 적용</li>
+  </ul>
+
+  <h3>1. 실습하기</h3>
+  <p>아래 클릭하면 class 서식 적용하기</p>
+
+  <div class="box">
+    아래 버튼을 클릭시 현재 박스요소에 서식을 적용하거나 제거하기
+  </div>
+
+  <input type="button" value="addClass적용하기" id="btn01">
+  <input type="button" value="removeClass적용하기" id="btn02">
+  <input type="button" value="toggleClass적용하기" id="btn03">
+  <input type="button" value="hasClass적용하기" id="btn04">
+
+  <h3>실습1. 아이콘폰트를 활용하여 '일시정지'버튼 클릭시 '플레이'버튼 변경, 다시 클릭시 '일시정지'버튼으로 나오게 하기</h3>
+
+  <i class="fas fa-pause"></i>
+  <i class="fas fa-bars"></i>
+  <i class="fas fa-angle-left"></i>
+  <i class="fas fa-angle-up"></i>
+
+  <script>
+    $(document).ready(function(){
+      $('.fa-pause').click(function(){    // 아이콘 폰트를 클릭했을 때
+        if($(this).hasClass('fas fa-pause')==true){   // pause클래스가 존재한다면
+          $(this).attr('class','fas fa-play');    // play로 이름을 변경하고
+        } else{   // 그렇지 않다면
+          $(this).attr('class','fas fa-pause');   // pause로 변경한다.
+        }
+      });
+
+      $('.fa-bars').click(function(){    // 아이콘 폰트를 클릭했을 때
+        if($(this).hasClass('fas fa-bars')==true){   // pause클래스가 존재한다면
+          $(this).attr('class','fas fa-times');    // play로 이름을 변경하고
+        } else{   // 그렇지 않다면
+          $(this).attr('class','fas fa-bars');   // pause로 변경한다.
+        }
+      });
+
+      $('.fa-angle-left').click(function(){    // 아이콘 폰트를 클릭했을 때
+        if($(this).hasClass('fas fa-angle-left')==true){   // pause클래스가 존재한다면
+          $(this).attr('class','fas fa-angle-right');    // play로 이름을 변경하고
+        } else{   // 그렇지 않다면
+          $(this).attr('class','fas fa-angle-left');   // pause로 변경한다.
+        }
+      });
+
+      $('.fa-angle-up').click(function(){    // 아이콘 폰트를 클릭했을 때
+        if($(this).hasClass('fas fa-angle-up')==true){   // pause클래스가 존재한다면
+          $(this).attr('class','fas fa-angle-down');    // play로 이름을 변경하고
+        } else{   // 그렇지 않다면
+          $(this).attr('class','fas fa-angle-up');   // pause로 변경한다.
+        }
+      });
+
+    });
+  </script>
+
+</body>
+</html>
