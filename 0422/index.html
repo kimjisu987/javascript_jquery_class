@@ -39,15 +39,15 @@
     .c_btn{
       position: absolute; z-index: 100;
       display: flex;
-      justify-content: space-evenly;
-      width: 50%;
+      width: 40%;
       left: 50%; bottom: 5%;
       transform: translateX(-50%);
     }
     .c_btn p{
       background: rgba(255,255,255,0.5);
-      width: 50px; height: 12px;
+      width: 30%; height: 1.5vh;
       cursor: pointer;
+      margin-inline: 1%;
     }
     .act{background: white !important;}
   </style>
@@ -181,6 +181,31 @@
         $(h_bottom).stop().animate({'height':'46px'},300);
       });
 
+
+      // 이미지 슬라이드 제작
+      // 컨트롤 버튼 만들기
+      let c_btn = $('.c_btn p');
+      let i = $('.c_btn p').index();
+
+      c_btn.click(function(){
+        clearInterval(Timer);   // 기존 자동슬라이드 종료
+        i = $(this).index();
+        if(i==0){
+          $('.mslide ul').html('<li><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li><li><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li><li><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li><li><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li><li><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li>')
+        } else if(i==1){
+          $('.mslide ul').html('<li><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li><li><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li><li><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li><li><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li><li><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li>')
+        } else if(i==2){
+          $('.mslide ul').html('<li><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li><li><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li><li><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li><li><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li><li><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li>')
+        } else if(i==3){
+          $('.mslide ul').html('<li><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li><li><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li><li><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li><li><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li><li><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li>')
+        } else{
+          $('.mslide ul').html('<li><a href="#" title=""><img src="./images/slide4.jpg" alt="슬라이드4"></a></li><li><a href="#" title=""><img src="./images/slide5.jpg" alt="슬라이드5"></a></li><li><a href="#" title=""><img src="./images/slide01.png" alt="슬라이드1"></a></li><li><a href="#" title=""><img src="./images/slide02.png" alt="슬라이드2"></a></li><li><a href="#" title=""><img src="./images/slide3.jpg" alt="슬라이드3"></a></li>')
+        }
+        c_btn.removeClass('act');
+        c_btn.eq(i).addClass('act');
+        Timer = setInterval(function(){move_left();}, 4000);
+      });
+
       // 메인슬라이드 구현
       // 1. 마지막 li태그를 첫번째 li태그의 앞으로 이동한다.
       $('.mslide ul li:last-child').insertBefore('.mslide ul li:first-child');
@@ -196,21 +221,38 @@
           $('.mslide ul li:first-child').insertAfter('.mslide ul li:last-child');
           // 처음에 1번 이미지가 두칸 왼쪽으로 이동하는 오류가 생김
           $('.mslide ul').css('margin-left','-100%');   // 2칸 밀린 위치를 오른쪽으로 다시 이동시킴
+          // $('.c_btn p').removeClass('act'); // 모든 컨트롤 버튼의 act 클래스 제거
+          // $('.c_btn p').eq(i).addClass('act');
+          c_btn.removeClass('act');
+          i++;    // i 변수 1씩 증가시키기 (i 값이 계속 0 나옴)
+          if (i==5){    // i가 5가 되면 = 0,1,2,3,4 에서 5로 벗어나면
+            i=0;    // i를 0으로 대입해서 첫번째 컨트롤으로
+          }
+          c_btn.eq(i).addClass('act');    // 위에서 만들어진 i대입
         });
       }
 
       // 3-2. 우측으로 움직이는 함수 만들기
       function move_right(){
+        // console.log(i);
         // 슬라이드 전체 목록을 오른쪽으로 1칸 이동하고
         $('.mslide ul').animate({'margin-left':'0'}, 500, /* 콜백함수 */ function(){
           $('.mslide ul li:last-child').insertBefore('.mslide ul li:first-child');
           $('.mslide ul').css('margin-left','-100%');
+          c_btn.removeClass('act');
+          i--;    // i 변수 1씩 감소시키기 (i 값이 계속 0 나옴)
+          if (i==-1){    // i가 -1이 되면 = 4,3,2,1,0 에서 -1로 벗어나면
+            i=4;    // i를 4로 대입해서 마지막 컨트롤로
+          }
+          c_btn.eq(i).addClass('act');    // 위에서 만들어진 i대입
         });
       }
       // move_right();   // 테스트 - 5번 슬라이드가 1번 이미지로 다시 옴
 
       // 4. setInterval 객체를 사용하여 매 4초마다 함수를 반복 실행하여 슬라이드가 자동으로 움직이게 한다.
-      // let Timer = setInterval(move_left, 4000);
+      let Timer = setInterval(function(){
+        move_left();
+      }, 4000);
 
       // 5. 버튼 변수 선언
       const l_btn = $('.mslide i.fa-angle-left');
@@ -232,31 +274,7 @@
         Timer = setInterval(move_left, 4000);
       })
 
-
-      // 컨트롤 버튼 만들기
-      let c_btn = $('.c_btn p');
-      let i = 0;
-
-      c_btn.click(function(){
-        i = $(this).index();
-        InOut();
       });
-
-      function InOut(){
-        
-        $('.mslide ul').css('margin-left', );
-        // console.log(i);
-        c_btn.removeClass('act');
-        c_btn.eq(i).addClass('act');
-
-        if(i==4){
-          i=0;
-        } else{
-          i++;
-        }
-      }
-    });
-    
   </script>
 
 
