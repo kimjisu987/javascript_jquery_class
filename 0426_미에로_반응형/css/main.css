@@ -1,0 +1,403 @@
+@charset "utf-8";
+
+/* main.css 메인서식 */
+:root{
+  --w_size : 1200px; margin: 0 auto;
+}
+
+/* 헤더영역 서식 */
+
+/* 메인영역 서식 */
+
+.slide{
+  position:relative; width: 100%; height:90vh; overflow:hidden;
+}
+.slide_wrapper div{position:absolute; width:100%;}
+.slide_wrapper div img{width:100%;}
+.slide_wrapper div:first-child img{
+  object-fit:cover;
+  transform: scale(1.2);
+}
+.slide_wrapper div:first-child{z-index:30;}
+.slide_wrapper div:nth-child(2){z-index:20;}
+.slide_wrapper div:last-child{z-index:10;}
+
+/* 2. 공지사항, 유투브 서식 */
+.news_con{
+  width: var(--w_size);
+  display: flex; margin: 100px auto 40px auto;
+}
+.news_con article{height: 500px; margin-right: 20px;}
+.news_con h2{
+  font-size: 44px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.news_con h2 img{width: 280px;}
+.news_con h2 span{font-size: 1.5rem; display: block;}
+.news_con .youtube{width: 665px;}
+.news_con iframe{width: 100%; height: 315px;}
+.news_con .notice{width: 510px;}
+.news_con .notice i.fa-circle{
+  color: #ff9d00;
+  padding-right: 6px;
+  font-size: 1rem;
+}
+.news_con .notice li{
+  line-height: 250%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* 3. 탭콘텐츠 서식 */
+.tab_con_wrap{background: #f1f1f1; padding-block: 50px 0px;}
+.tab_con_wrap article{
+  width: var(--w_size); height: 500px;
+  margin: 0 auto;
+  background: url('../images/mcon2_7.png') no-repeat right;
+  background-size: 560px;
+}
+.tab_con_wrap article > h2{
+  font-size: 32px;
+  padding-block: 50px 20px;
+}
+.tab_con{
+  position: relative;
+  display: flex;
+  height: 500px;
+  padding-top: 40px;
+}
+.tab_con li{margin-inline:5px;}
+.tab_con li a{
+  padding: 10px;
+  background: #333;
+  color: #fff;
+  font-size: 1.05rem;
+}
+.tab_con li img{width: 560px;}
+.tab_con i.fas{display: none;}
+.tab_con li a:hover{text-decoration: none;}
+.cont{
+  position: absolute; left:20px; top: 100px;
+  width: 50%;
+  display: none;
+}
+.tab_con li:first-child .cont{display: block;}
+.tab_con dl{}
+.tab_con dl dt{
+  margin-block: 20px;
+  font-size: 1.5rem; font-weight: bold;
+}
+.tab_con dl dd{font-size: 1rem; line-height:180%;}
+.t_act{background: #f36f21 !important;}
+
+/* 4. 인기제품 서식 */
+.best_product { width:100%; background:#ffc845; padding-block: 80px 60px;} 
+.best_product article { width:1200px; margin:0px auto; } 
+.title2 { font-size:32px; font-weight:bold; padding-bottom:20px; } 
+.best_product ul { display:flex; } 
+.best_product ul > li { width:25%; padding:0px 10px; box-sizing:border-box; } 
+.best_product ul > li img { width:100%; } 
+.best_product ul > li h3 { font-size:24px;border-bottom:1px solid #9f5e05; height:60px; padding-top:10px; } 
+.best_product ul > li p { padding-top:10px; font-size:14px;line-height:30px; color: #805a28; } 
+
+/* 5. 이벤트 슬라이드 */
+.event{width: 1200px; margin: 100px auto; position: relative;}
+.event article{position: relative; overflow: hidden;}
+.es_wrap{display: flex; width: 3600px;}
+.e_slide{width: 1200px;}
+.event i.fas{
+  position: absolute; top: 160px;
+  font-size: 30px; padding: 5px 12px;
+  border-radius: 50%;
+  border: 1px solid #333;
+}
+.event i.fa-angle-left{left: -55px;}
+.event i.fa-angle-right{right: -55px;}
+.e_slide a{display: flex;}
+.e_slide .e_txt{padding: 30px 0px 0px 40px;}
+.e_txt span{background: #ccc; padding: 5px 10px;}
+.e_txt h3{font-size: 18px; line-height: 60px;}
+.e_txt p{font-size: 16px;}
+
+/* 6. 광고갤러리 그리드 서식 */
+#gallery{
+  width: 100%; margin: 0 auto;
+  background-color: #f36f21;  /* 갤러리 자체 배경색 */
+}
+#gallery > h2{                  /* 미에로화이바~ 제목 */
+  width: 1200px; margin: 0 auto;
+  padding-block: 80px 20px;
+  font-size: 40px;
+  color: #ffffff;
+}
+.gallery_inner{
+  width: 1200px;
+  margin: 0 auto;
+}
+.grid_gallery{
+  width: 800px; height: 712px;
+  display: grid;                /* 그리드 레이아웃 */
+  grid-gap: 20px;               /* 그리드 사이 간격 */
+  padding: 20px;                /* 그리드 밖 여백 */
+  grid-template-columns: repeat(3, auto);  /* 가로 3칸 오토 */
+  grid-template-rows: repeat(3, 25%);    /* 세로 3칸 270px */
+  grid-template-areas:          /* 그리드 위치 쉽게 정하기 */
+  "g01 g02 g03"
+  "g04 g02 g05"
+  "g06 g07 g08";
+}
+.grid_gallery img{width: 100%;}  /* div 안 이미지 비율 */
+.grid_gallery figure{overflow: hidden;}  /* 안보이게 숨기기 */
+
+/* .grid_gallery figure(부모) > figcaption(자손)이 날아온다
+자기 자신의 위치에서 -80px */
+.grid_gallery figure:hover > figcaption{top: -61px;}
+.grid_gallery figure:nth-child(2):hover > figcaption{top: -61px;}
+
+/* 그리드 쉽게 만들기 위한 이름주기 */
+.grid_gallery figure:first-child{grid-area:g01;}
+.grid_gallery figure:nth-child(2){grid-area:g02;}
+/* grid-area: 1/2/3/3;행번호/열번호 */
+.grid_gallery figure:nth-child(3){grid-area:g03;}
+.grid_gallery figure:nth-child(4){grid-area:g04;}
+.grid_gallery figure:nth-child(5){grid-area:g05;}
+.grid_gallery figure:nth-child(6){grid-area:g06;}
+.grid_gallery figure:nth-child(7){grid-area:g07;}
+.grid_gallery figure:nth-child(8){grid-area:g08;}
+
+/* 캡션서식 */
+.grid_gallery figcaption{
+  height: 60px;
+  transition: 0.5s;             /*움직일 때 하는 시간 속성*/
+  background: #111111;
+  /* 영상보기 위치 고정하기 위해 포지션 속성 지정, hover 태그를 위해 top 값 넣어주기 */
+  position: relative; top: 10px;
+}
+.grid_gallery figcaption h3{
+  font-size: 20px;
+  font-weight: bold;
+  color: #f36f21;
+  padding: 10px 0px 0px 10px;
+}
+.grid_gallery figcaption p{
+  font-size: 12px;
+  color: #fff;
+  padding: 8px 0px 0px 10px;
+}
+.grid_gallery figcaption span{
+  font-size: 14px;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 5px;
+  /* 캡션 박스 안에서 우측 하단으로 잡아주기 위한 태그 */
+  position: absolute;
+  right: 10px; bottom: 15px;
+}
+
+.lnb ul{
+  display:flex; flex-direction: column;
+  position:absolute; right:1%; top:50%;z-index:100;
+  transform: translateX(-50%);
+}
+.lnb li{
+  width:15px; height:15px; border-radius:50%;
+  background:#fff;
+  margin:5px 0px;
+  cursor: pointer;
+}
+.act{
+  background: #f36f21 !important;
+}
+/* 재생, 정지 버튼 */
+.slide i.fa-play, .slide i.fa-pause{
+  position: absolute;
+  bottom:5%; right:1%;
+  width: 48px; height: 48px;
+  text-align: center;
+  line-height: 48px;
+  color: #333;
+  font-size: 22px;
+  z-index: 999;
+  background: rgba(255,255,255,0.65);
+  border: 1px solid #fff;
+  box-sizing: border-box;
+}
+.slide .fa-play{text-indent: 4px;}
+.slide i.fas:hover{color: #fff; background: orange; box-shadow: none;}
+
+/* 좌, 우버튼 서식 */
+.s_btn{
+  display: flex;
+  position:absolute; top: 70%; left: 3%;
+  cursor: pointer;
+  z-index: 100;
+}
+.s_btn > li{
+  background-color: #f2f2f2; 
+  padding: 12px 6px; margin-right: 10px;
+}
+
+/* 푸터영역 서식 */
+footer{}
+
+/* 모달 서식 */
+.modal{
+  /* display: none; */
+  position: fixed; left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 9999;
+}
+.m_inner{
+  width: 400px; max-width: 80%; height: auto;
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+.m_inner i.fas{
+  float: right;
+  font-size: 35px;
+  cursor: pointer;
+}
+.modal img{
+  width: 100%; object-fit: cover;
+  margin-block: 15px;
+}
+
+
+/* 작은 태블릿 해상도(768~1024)일 경우 */
+@media screen and (min-width:768px) and (max-width:1024px) {
+  /* 1. 슬라이드 서식 */
+  .slide{height: 90vh;}
+  .slide_wrapper div img{height: 90vh; object-fit: cover;}
+  .slide_wrapper div:first-child img{object-position: 70% 50%;}
+  .slide_wrapper div:nth-child(2) img{object-position: 40% 50%;}
+  .slide_wrapper div:last-child img{object-position: 25% 50%;}
+
+  /* 2. 뉴스콘텐츠 서식 */
+  .news_con{width: 100%; display: block; margin: 60px auto; padding-inline: 5%; box-sizing: border-box;}
+  .news_con article{height: auto; margin-bottom: 40px;}
+  .news_con article > h2 span{font-size: 1.5rem; line-height: 200%;}
+  .news_con article > h2{font-size: 2.1rem;}
+  .news_con .youtube, .news_con .notice{width: 100%;}
+  .news_con .notice li{font-size: 1.3rem; line-height: 140%;}
+  .news_con iframe{width: 100%; height: 400px;}
+
+  /* 3. 탭콘텐츠 서식 */
+  .tab_con_wrap article > h2{font-size: 40px;}
+  .tab_con{display: block; padding-top: 20px;}
+  .tab_con li a{display: block;}
+  .tab_con_wrap{padding-inline: 5%; height: auto; padding-bottom: 50px;}
+  .tab_con_wrap article{width: 100%; height: 950px; background-position: center bottom; background-size: 90%;}
+  .tab_con i.fas{display: block; float: right;}
+  .tab_con li a{padding: 15px 10px;}
+  .cont{position: static; width: 100%; padding: 3%; box-sizing: border-box;}
+  .tab_con li img{width: 100%;}
+  .tab_con dl dt{margin-block: 0px; padding-bottom: 10px;}
+
+  /* 4. 제품소개 서식 */
+  .best_product article {width: 100%;}
+  .best_product ul {display:flex; flex-wrap: wrap; justify-content: center;} 
+  .best_product ul > li {width:40%;}
+  .best_product article h2{padding-left: 10%;}
+
+  /* 5. 이벤트 */
+  .event{width: 100%; margin: 80px auto;}
+  .event .title2{padding-block: 0px 30px;}
+  .event article{}
+  .es_wrap{width: 300%;}
+  .e_slide{display: block;}
+  .e_slide, .e_slide img{width: 100%; margin-bottom: 20px;}
+  .e_slide a{display: block;}
+  .e_slide .e_txt{padding: 10px 0px 0px 40px; height: 120px;}
+  .event i.fas {top: 35%;}
+  .event i.fa-angle-left {left: 10px;}
+  .event i.fa-angle-right {right: 10px;}
+
+  /* 6. 갤러리 */
+  #gallery{width: 100%;}
+  #gallery > h2{width: 100%;}
+  .gallery_inner{width: 100%;}
+  .grid_gallery{ width: 90%; height: 100%; margin: 0 auto; grid-gap: 1%; padding: 0px;}
+  .grid_gallery figcaption{opacity: 0;}
+  .grid_gallery figcaption{height: 40%;}
+  .grid_gallery figcaption span{top: 30%; bottom: 28%;}
+  .grid_gallery figure:hover > figcaption{top: -40%; opacity: 1;}
+  .grid_gallery figure:nth-child(2) figcaption{height: 28%;}
+  .grid_gallery figure:nth-child(2) figcaption span{top: 28%; bottom: 45%;}
+  .grid_gallery figure:nth-child(2):hover > figcaption{top: -28%; opacity: 1;}
+
+}
+/* 모바일 해상도(~768)일 경우 */
+@media screen and (max-width:767px) {
+  /* 1. 슬라이드 서식 */
+  .slide{height: 600px;}
+  .slide_wrapper div img{height: 600px; object-fit: cover;}
+  .slide_wrapper div:first-child img{object-position: 75% 50%;}
+  .slide_wrapper div:nth-child(2) img{object-position: 40% 50%;}
+  .slide_wrapper div:last-child img{object-position: 25% 50%;}
+
+  /* 2. 뉴스콘텐츠 서식 */
+  .news_con{width: 100%; display: block; margin: 60px auto; padding-inline: 5%; box-sizing: border-box; text-align: center;}
+  .news_con article{height: auto; padding: 2%; margin-bottom: 40px;}
+  .news_con article > h2 span{font-size: 1.1rem;}
+  .news_con article > h2{font-size: 2.1rem;}
+  .news_con .youtube, .news_con .notice{width: 100%;}
+  .news_con .notice li{text-align: left; line-height: 200%;}
+  .news_con iframe{height: 245px;}
+
+  /* 3. 탭콘텐츠 서식 */
+  .tab_con{display: block; padding-top: 20px;}
+  .tab_con li a{display: block;}
+  .tab_con_wrap article{width: 100%; height: 800px; background-position: center 95%; background-size: 360px;}
+  .tab_con i.fas{display: block; float: right;}
+  .tab_con li a{padding: 15px 10px;}
+  .tab_con_wrap article > h2{text-align: center;}
+  .cont{position: static; width: 100%; padding: 3%; box-sizing: border-box;}
+  .tab_con li img{width: 100%;}
+  .tab_con dl dt{margin-block: 0px; padding-bottom: 10px;}
+
+  /* 4. 제품소개 서식 */
+  .best_product article{width: 100%; text-align: center;}
+  .best_product ul{display: block; width: 70%; margin: 0 auto;}
+  .best_product ul > li{width: 100%;}
+  .best_product ul > li img{width: 100%;}
+  .best_product p{text-align: left; margin-bottom: 50px;}
+
+  /* 5. 이벤트 */
+  .event{width: 100%; margin: 80px auto;}
+  .event .title2{padding-block: 0px 30px; text-align: center;}
+  .event article{}
+  .es_wrap{width: 300%;}
+  .e_slide{display: block;}
+  .e_slide, .e_slide img{width: 100%; margin-bottom: 20px;}
+  .e_slide a{display: block;}
+  .e_slide .e_txt{padding: 10px 0px 0px 40px; height: 120px;}
+  .event i.fas {top: 30%;}
+  .event i.fa-angle-left {left: 10px;}
+  .event i.fa-angle-right {right: 10px;}
+
+  /* 6. 갤러리 */
+  #gallery{width: 100%; padding-bottom: 50px;}
+  #gallery > h2{width: 100%; text-align: center;}
+  .gallery_inner{width: 90%;}
+  .grid_gallery{width: 100%; height: 100%; display: block; grid-gap: 0px; padding: 0px; margin: 0px;}
+  .grid_gallery figure{width: 100%; box-sizing: border-box; height: 100%; overflow: hidden;}
+
+  .grid_gallery figcaption{height: 50px;}
+  .grid_gallery figure:hover > figcaption{top: -50px;}
+  .grid_gallery figure:nth-child(2){height: 50px;}
+  .grid_gallery figure:nth-child(2):hover > figcaption{top: -50px;}
+
+  
+}
+
+
+
+
+/* 큰 태블릿 해상도(1025~1119)일 경우 */
+@media screen and (min-width:1024px) and (max-width:1119px) {
+  .slide_wrapper div img{height: 100vh; object-fit: cover;}
+}
